@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 #include "display.h"
+#include "vector.h"
 
 //Global Variables
 bool is_running = false;
@@ -53,7 +54,8 @@ void render(void) {
 
     // draw, render, clear - inside game loop
     draw_grid();
-                                    
+
+    draw_pixel(20, 20, 0xFFFFFF00);                    
     draw_rect(300, 200, 300, 150, 0xFF598a5c);
 
     render_color_buffer();

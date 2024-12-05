@@ -57,3 +57,35 @@ Defining Header files
 Header files - .h extension, contain only declarations and function prototypes (name of function and parameters, global variables, etc)
 makes things in implementation files visible to other files
 implementataion files - .c extension, contain the actual implementation of functions
+
+--------------------------------------------------------------------
+Vectors
+--------
+What is the magnitude of the vector? Where is it pointing?
+Scalar quantities and Vector quantities
+scalars - single number, ex: Temperature, area, length, pressure - one number is enough
+to 'scale' a certain mangitude
+vectors - velocity, acceleration, force, lift, drag, displacement
+typically a number and a direction, like 20 m/s northeast
+
+how does this translate to 3d objects?
+for 2d - we have two points, an x and a y (x, y) to determine location
+with 3d - we include a z-axis (our 3 dimensional axis), (x, y, z) (3.0, 0, 3.0)
+we can think of these points as vectors
+most of the vectors we will use will comprise of 2 components for 2d, and
+3 components for 3d.
+we will start making vector classes, for example:
+// new type to hold 2d vectors
+typedef struct {
+    float x;
+    float y;
+} vec2_t;
+
+vec2_t p0 = { 0.0, 2.0 };
+a struct in C is just a collection of values
+for all new types we create we'll append the '_t' to each (vec2_t)
+typedef struct {
+    float x;
+    float y;
+    float z;
+} vec3_t;
