@@ -1,0 +1,59 @@
+make build - compiles and builds binary for all in src
+make run - runs binary file
+
+Color buffer:
+an array of numbers in hexidecimal notation
+nothing but an array in memory, this space in memory is a series of numbers
+SDL renders all these colors/numbers as a texture
+
+0xFFFF0000 - color renders red
+
+we need to create a data structure that receives a lot of these colors
+to encode a number like this it takes 32 bits
+
+number of bytes to hold an int in c - depends on compiler
+and machine. 
+
+will declare uint32_t* color_buffer; - which will be a pointer to an array
+in memory, the size of which will depend on the window height and width. Each
+element in the array is 32 bits, and the pointer points to the first one in the array
+num of elements in array = width x height
+
+declare a null pointer to the buffer array
+uint32_t* color_buffer = null
+// allocate the required bytes in memory for the color buffer,
+// malloc expects number of bytes (window width x height) x size of single color
+and cast to uint32_t
+void setup(void) {
+    color_buffer = (uint32_t*) malloc(sizeof(uint32_t)) * window_width * window_height
+}
+//set the pixel at row 10 column 20 to the color red
+color_buffer[(window_width * 10) + 20] = 0xFFFF0000;
+
+colorbuffer vs framebuffer - some books/programmers call the buffer in memory
+that holds pixel color values a framebuffer, but in this class we call it colorbuffer -
+they're the same thing, a mirror in memory of the pixels that we want to see in our display.
+
+allocating memory: 
+The function malloc() expects the amount of bytes as parameter.
+every time we use malloc - we are responsible to free this memory up when we're done
+in this example we're putting it at the bottom of the main function before we quit the program
+
+there is a possiblity that malloc fails to allocate memory, maybe the machine doesn't have enough free
+memory, and will return a NULL pointer. Most programmers will test to see if return of Malloc is
+null and only continue if allocation was successful.
+
+we should always check for return errors, but for the sake of this course and our time we will assume that some
+of these functions are successful
+
+SDL texture
+feed color buffer to SDL_Texture for rendering
+
+Full Screen window
+changing window size to fit full Screen - we use SDL to check for max resolution of monitor
+
+
+Defining Header files
+Header files - .h extension, contain only declarations and function prototypes (name of function and parameters, global variables, etc)
+makes things in implementation files visible to other files
+implementataion files - .c extension, contain the actual implementation of functions
